@@ -68,7 +68,6 @@ Console.WriteLine($"3 * 5 =  {calculator1.Multiply(3, 5)}");
 Console.WriteLine("'''\n");
 
 Console.WriteLine("'''");
-
 Player player1 = new Player();
 player1.Show();
 Player player2 = new Player("용사", 150);
@@ -76,12 +75,53 @@ player2.Show();
 
 Console.WriteLine("'''\n");
 
+Console.WriteLine("'''");
 Stock price = new Stock();
 price.CurrentPrice = 30;
 Console.WriteLine($"주가: {price.CurrentPrice}");
 
 Console.WriteLine("'''\n");
 
+Console.WriteLine("'''");
+Product product1 = new Product();
+product1.name = "노트북";
+product1.price = 1500000;
+Console.WriteLine($"{product1.name}: {product1.price}원 (수량: {product1.quantity})");
+
+Console.WriteLine("'''\n");
+
+
+Console.WriteLine("'''");
+Circle circle1 = new Circle();
+Console.WriteLine($"반지름: {circle1.Radius}, 넓이: {circle1.Area:F2}");
+
+
+Console.WriteLine("'''\n");
+
+Console.WriteLine("'''");
+Monster monster1 = new Monster();
+monster1.name = "고블린";
+monster1.Attack();
+Monster monster2 = new Monster { name = "오크"};
+monster2.Attack();
+
+Console.WriteLine("'''\n");
+
+
+Console.WriteLine("'''");
+Character character1 = new Character { name = "용사", level = 10, job = "전사" };
+
+Console.WriteLine($"{character1.name} - Lv {character1.level} {character1.job}");
+
+Console.WriteLine("'''\n");
+
+Console.WriteLine("'''");
+
+Person1 alice = new Person1("Alice", 25);
+Person1 bob = new Person1("Bob", 30);
+alice.SetFriend(bob);
+
+Console.WriteLine("'''\n");
 class ClassName
 {
     public static void MemberName()
@@ -178,5 +218,61 @@ class Stock
     {
         get  { return price; }
         set  { price = value; }
+    }
+}
+
+class Product
+{
+    public string name { get; set; }
+    public int price { get; set; }
+    public int quantity { get; set; } = 1;
+}
+
+class Circle
+{
+    public double Radius { get; } = 5;
+    public double Area => Math.PI * Radius * Radius;
+}
+
+class Monster
+{
+    public string name;
+    public int health;
+
+    public void Attack()
+    {
+        Console.WriteLine($"{name}이(가) 공격합니다!");
+    }
+}
+
+class Character
+{
+    public string name;
+    public string job;
+    public int level;
+
+}
+
+
+class Person1
+{
+    private string _name;
+    private int _age;
+
+    public Person1(string name, int age)
+    {
+        this._name = name;
+        this._age = age;
+    }
+
+    public void SetFriend(Person1 friend)
+    {
+        // 현재 인스턴스를 다른 개체에 전달
+        friend.PrintFriendInfo(this);
+    }
+
+    public void PrintFriendInfo(Person1 person)
+    {
+        Console.WriteLine($"{_name}의 친구는 {person._name}입니다.");
     }
 }
