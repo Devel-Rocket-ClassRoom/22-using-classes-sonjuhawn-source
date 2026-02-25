@@ -59,6 +59,29 @@ Console.WriteLine($"클래스ps1.X = {pointClass1.x}, ps2.X = {pointClass2.x}");
 
 Console.WriteLine("'''\n");
 
+Console.WriteLine("'''");
+
+Calculator calculator1 = new Calculator();
+Console.WriteLine($"3 + 5 =  {calculator1.Add(3, 5)}");
+Console.WriteLine($"3 * 5 =  {calculator1.Multiply(3, 5)}");
+
+Console.WriteLine("'''\n");
+
+Console.WriteLine("'''");
+
+Player player1 = new Player();
+player1.Show();
+Player player2 = new Player("용사", 150);
+player2.Show();
+
+Console.WriteLine("'''\n");
+
+Stock price = new Stock();
+price.CurrentPrice = 30;
+Console.WriteLine($"주가: {price.CurrentPrice}");
+
+Console.WriteLine("'''\n");
+
 class ClassName
 {
     public static void MemberName()
@@ -114,4 +137,46 @@ class PointClass
 {
     public int x;
     public int y;
+}
+
+class Calculator
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+    public int Multiply(int a, int b) => a * b;
+}
+
+class Player
+{
+    public string name;
+    public int hp;
+    public Player()
+    {
+        name = "Unknown";
+        hp = 100;
+    }
+
+    public Player(string name, int hp)
+    {
+        this.name = name;
+        this.hp = 100;
+    }
+
+    public void Show()
+    {
+        Console.WriteLine($"이름: {name}, 체력: {hp}");
+    }
+}
+
+class Stock
+{
+    decimal price;
+
+    public decimal CurrentPrice
+    {
+        get  { return price; }
+        set  { price = value; }
+    }
 }
